@@ -1,0 +1,64 @@
+<h1 class="fw-bold">
+  Currency Exchanger
+</h1>
+
+<div class="converter-wrapper">
+
+  <div class="right shadow">
+    <h3 *ngIf="title" class="fw-bold">{{title}}</h3>
+
+    <form (ngSubmit)="convert(converterForm)" #converterForm="ngForm">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Amount</mat-label>
+        <input matInput placeholder="Amount" pattern="[0-9]+" [(ngModel)]="converter.amount" name="amount" type="number"
+          required>
+        <mat-error
+          *ngIf="converterForm.form.controls['amount']&&converterForm.form.controls['amount'].status === 'INVALID'">
+          Amount should not be empty and accepts numbers only.</mat-error>
+      </mat-form-field>
+      <div class="from-to">
+        <mat-form-field appearance="fill">
+          <mat-label>From</mat-label>
+          <mat-select [(ngModel)]="converter.from" name="from" required [disabled]="onPredefinedDetails">
+            <mat-option *ngFor="let s of symbols" [value]="s.name">
+              <div class="d-flex align-items-center fs-12 white-space-nowrap">
+                <img [src]="s.icon" width="20" alt="">&nbsp;<span>{{s.name}}</span> <span>({{s.label}})</span>
+              </div>
+            </mat-option>
+          </mat-select>
+          <mat-spinner matPrefix *ngIf="symbolsLoading" class="d-inline-block" [color]="'primary'" [diameter]="15">
+          </mat-spinner>
+        </mat-form-field>
+        <button type="button" (click)="switchSides()" [disabled]="onPredefinedDetails" mat-icon-button>
+          <mat-icon *ngIf="!onPredefinedDetails">repeat</mat-icon>
+          <mat-icon *ngIf="onPredefinedDetails">arrow_right_alt</mat-icon>
+        </button>
+        <mat-form-field appearance="fill">
+          <mat-label>To</mat-label>
+          <mat-select [(ngModel)]="converter.to" name="to" required>
+            <mat-option *ngFor="let s of symbols" [value]="s.name">
+              <div class="d-flex align-items-center fs-12 white-space-nowrap">
+                <img [src]="s.icon" width="20" alt="">&nbsp;<span>{{s.name}}</span> <span>({{s.label}})</span>
+              </div>
+            </mat-option>
+          </mat-select>
+          <mat-spinner matPrefix *ngIf="symbolsLoading" class="d-inline-block" [color]="'primary'" [diameter]="15">
+          </mat-spinner>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button type="submit" color="primary" class="action-btn">
+        <mat-spinner *ngIf="btnLoading" class="d-inline-block" [color]="'accent'" [diameter]="15"></mat-spinner> Convert
+      </button>
+    </form>
+  </div>
+  <!---->
+  <div class="left text-center shadow" *ngIf="converter&&converter.rate">
+    <div class="converstion-result">{{converter.result | number:'1.2-2' }} {{converter.from}}</div>
+    <div>
+      <small class="text-muted">1.00 {{converter.from}} = {{converter.rate | number:'1.2-2'}}
+        {{converter.to}}</small>
+    </div>
+    <button *ngIf="!onPredefinedDetails" [routerLink]="['/home/details/'+converter.id]" type="button" mat-button
+      color="accent">More Details</button>
+  </div>
+</div>

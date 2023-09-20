@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+}
+
+h1 {
+  text-shadow: none !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  min-height: 80vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+hr {
+  border-top: 0;
+  border-color: #dadada;
+  box-shadow: none;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.text-end {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.white-space-nowrap {
+  white-space: nowrap;
+}
+
+.fw-bold {
+  font-weight: bold !important;
+}
+
+.bg-white {
+  background-color: #FFF;
+}
+
+.shadow {
+  box-shadow: 0 1px 3px rgb(187 180 180 / 70%);
+}
+
+.text-muted {
+  color: rgb(153, 153, 153);
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.error-alert {
+  background-color: rgb(146, 3, 3);
+  color: #FFF;
+
+  button {
+    color: #FFF;
+  }
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.overlayed {
+  position: absolute;
+  top: 30%;
+  z-index: 99999999;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
