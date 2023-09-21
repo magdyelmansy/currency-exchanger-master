@@ -57,7 +57,7 @@ export class CurrencyConverterService extends APIService {
 
   convert(converter: Converter) {
     console.log(converter)
-    return this.http.get(this.api() + `convert?access_key=${this.accessKey}&to=${converter.to}&from=${converter.from}&amount=${converter.amount}`, this.requestOptions());
+    return this.http.get(this.api() + `convert?access_key=${this.accessKey}&to=${converter.toCurrencyFullName}&from=${converter.fromCurrencyFullName}&amount=${converter.amount}`);
   }
 
   getSymbols() {
@@ -69,7 +69,7 @@ export class CurrencyConverterService extends APIService {
 
 
   getTimeseries(startDate: string, endDate: string, base: string, symbol: string) {
-    return this.http.get(this.api() + `timeseries?start_date=${startDate}&end_date=${endDate}&base=${base}&symbols=${symbol}`, this.requestOptions());
+    return this.http.get(this.api() + `timeseries?access_key=${this.accessKey}&start_date=${startDate}&end_date=${endDate}&base=${base}&symbols=${symbol}`);
   }
 
 

@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+// import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Converter } from 'src/app/models/converter.model';
 import { CustomDatePipe } from 'src/app/pipes/custom-date.pipe';
 import { CurrencyConverterService } from 'src/app/services/currency-converter.service';
 import { ConverterComponent } from '../converter/converter.component';
+import {MatSnackBar, MatSnackBarRef, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-currency-converstion-details',
